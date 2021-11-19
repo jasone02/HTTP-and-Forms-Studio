@@ -1,0 +1,56 @@
+
+<!doctype html>
+
+<head>
+	<meta charset="utf-8">
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            flex-wrap: wrap;
+            background-color: cornflowerblue;
+            align-items: center;
+            justify-content: center;
+            width: auto;
+        }
+
+     </style>
+	<script>
+        function setSearchEngine() {
+            let engine = document.querySelector("input[name=engine]:checked").value;
+            let actions = {
+                "google":"https://www.google.com/search",
+                "duckDuckGo":"https://www.duckduckgo.com/",
+                "bing":"https://www.bing.com/search",
+                "ask":"https://www.ask.com/web"
+            };
+            let actionURL = actions[engine];
+            console.log(engine);
+            console.log(actionURL);
+            document.getElementById("searchForm").setAttribute("action", actionURL);
+        }
+    window.addEventListener("load", function(){
+        document.getElementById("submit").addEventListener("click", function() {
+            if (document.querySelector("input[name=engine]:checked").value != null && document.getElementById("searchField").value != "") {
+                setSearchEngine();
+            }
+        });
+    });
+	</script>
+</head>
+
+<body>
+
+	<form id="searchForm">
+        <div.a {text-align: center}>
+            <input type="text"name="q" id="searchField"/>
+        </div.a>
+        
+        <label>Google<input type="radio" name="engine" value="google"/></label>
+        <label>DuckDuckGo<input type="radio" name="engine" value="duckDuckGo"/></label>
+        <label>Bing<input type="radio" name="engine" value="bing"/></label>
+        <label>Ask<input type="radio" name="engine" value="ask"/></label>
+        <button id="submit">Go!</button>
+	</form>
+
+</body>
